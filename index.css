@@ -2,6 +2,7 @@
         background-color: #121212;
         /* opacity: 77%; */
     }
+    /* HEADER */
     
     .header {
         /* background-color: red; */
@@ -38,6 +39,25 @@
     .header-container__name {
         text-align: center;
         /* padding: 5px 20px; */
+    }
+    /* INTRO */
+    
+    .intro-heading {
+        margin-top: 200px;
+        /* background-color: red; */
+    }
+    
+    .intro-heading__title {
+        margin-top: 40px;
+        text-align: center;
+        color: white;
+        opacity: 77%;
+    }
+    
+    .intro-heading__text {
+        margin-top: 50px;
+        color: white;
+        opacity: 88%;
     }
     /* KEYFRAMES */
     
