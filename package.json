@@ -2,10 +2,14 @@
   "name": "indying-games",
   "version": "1.0.0",
   "private": true,
-  "source": ["src/index.html", "src/devlog/index.html", "src/devlog/hexagon/index.html"],
+  "source": [
+    "src/index.html",
+    "src/devlog/index.html",
+    "src/devlog/hexagon/index.html"
+  ],
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build --public-url ./ --dist-dir dist"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
