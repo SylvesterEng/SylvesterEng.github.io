@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indying Games</title>
+  <meta name="description" content="Indying — Making games reality" />
+  <link rel="icon" type="image/png" href="./assets/mark.png" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="container-x navbar-inner">
+      <a href="/" class="navbar-brand">
+        <img src="./assets/mark.png" alt="Indying games logo" class="navbar-mark" />
+        <span class="navbar-wordmark">INDYING <span class="text-accent">GAMES</span></span>
+      </a>
+
+      <nav class="navbar-links">
+        <a href="#games" class="navlink">Games</a>
+        <a href="#community" class="navlink">About</a>
+        <a href="/devlog/" class="navlink">Devlog</a>
+        <a href="#brand" class="navlink">Brand Guide</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="https://www.fortnite.com/@indying" target="_blank" rel="noopener" class="btn-primary">Follow</a>
+      </div>
+
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-open" class="menu-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+        <svg id="icon-close" class="menu-icon hidden" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden">
+      <div class="container-x mobile-menu-inner">
+        <a href="#games" class="navlink-mobile">Games</a>
+        <a href="#community" class="navlink-mobile">About</a>
+        <a href="/devlog/" class="navlink-mobile">Devlog</a>
+        <a href="#brand" class="navlink-mobile">Brand Guide</a>
+        <div class="mobile-menu-actions">
+          <a href="https://www.fortnite.com/@indying" target="_blank" rel="noopener" class="btn-primary">Follow</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="halftone"></div>
+
+      <div class="container-x hero-inner">
+        <img src="./assets/mark.png" alt="" class="hero-mark" />
+
+        <span class="badge-pill mt-8 inline-flex">Making games real</span>
+
+        <h1 class="hero-title">
+          One dev.
+          <span class="highlight">Big ideas</span>
+        </h1>
+        <p class="hero-subtitle">
+          Just someone building maps people actually want to play.
+        </p>
+        <div class="hero-actions">
+          <a href="#games" class="btn-primary btn-lg">Explore Games</a>
+          <a href="#community" class="btn-secondary btn-lg">About Indying</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Games -->
+    <section id="games" class="section">
+      <div class="container-x">
+        <div class="section-intro">
+          <p class="eyebrow">Live on Fortnite Creative</p>
+          <h2 class="section-title">Maps you can play right now</h2>
+          <p class="section-stats">
+            <span><strong class="stat-value">3.2K</strong> followers</span>
+            <span><strong class="stat-value">83.2M</strong> minutes played</span>
+            <span><strong class="stat-value">116.2K</strong> favorites</span>
+          </p>
+        </div>
+
+        <div class="media-grid">
+          <article class="media-card">
+            <img src="./assets/game-hexagon.jpg" alt="Hexagon Fall Guys thumbnail" class="media-thumb" />
+            <div class="card-body">
+              <h3 class="heading-sm">Hexagon Fall Guys! 👑</h3>
+              <p class="card-text">10,779 all-time peak players</p>
+              <div class="card-actions">
+                <span onclick="navigator.clipboard.writeText('8157-9600-9699')" class="tag">8157-9600-9699</span>
+                <a href="https://www.fortnite.com/@indying/8157-9600-9699" target="_blank" rel="noopener"
+                  class="btn-ghost card-link">Play now →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <img src="./assets/game-arsenal.jpg" alt="Arsenal First Person Gun Game thumbnail" class="media-thumb" />
+            <div class="card-body">
+              <h3 class="heading-sm">Arsenal | First Person Gun Game</h3>
+              <p class="card-text">301 all-time peak players</p>
+              <div class="card-actions">
+                <span onclick="navigator.clipboard.writeText('2448-3316-7821')" class="tag">2448-3316-7821</span>
+                <a href="https://www.fortnite.com/@indying/2448-3316-7821" target="_blank" rel="noopener"
+                  class="btn-ghost card-link">Play now →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Dev Log -->
+    <section id="community" class="section">
+      <div class="container-x">
+        <div class="section-intro">
+          <p class="eyebrow">About Indying</p>
+          <h2 class="section-title">One developer, no studio</h2>
+          <p class="section-lede">
+            There's no roadmap meeting, no marketing team, no one to hand a bug off to. Every
+            map gets designed, built, tested, and shipped by the same person, start to finish.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <div class="about-profile">
+            <img src="./assets/mark.png" alt="" class="about-avatar" />
+            <div>
+              <p class="about-name">Indying</p>
+              <p class="about-role">Solo Fortnite Creative Developer</p>
+            </div>
+          </div>
+          <p class="about-bio">
+            Building Fortnite Creative islands solo, end to end — design, Verse scripting,
+            testing, and the seasonal updates after launch. No writers room, no QA team, just
+            one person and a full lobby of players who don't know they're testing.
+          </p>
+          <ul class="about-facts">
+            <li><span>Platform</span><strong>Fortnite Creative (UEFN)</strong></li>
+            <li><span>Focus</span><strong>Obstacle courses, arena shooters</strong></li>
+            <li><span>Toolkit</span><strong>Verse, Creative devices</strong></li>
+            <li><span>Team size</span><strong>One</strong></li>
+          </ul>
+        </div>
+
+        <div class="devlog-header">
+          <h3 class="heading-sm">Dev Log</h3>
+        </div>
+        <div class="devlog-grid">
+          <article class="media-card">
+            <div class="tile bg-accent text-paper">
+              <img src="./assets/mark.png" alt="" class="tile-icon" />
+            </div>
+            <div class="card-body">
+              <p class="card-meta">Aug 2, 2026</p>
+              <h3 class="heading-sm mt-2">Building Hexagon Fall Guys Solo</h3>
+              <p class="card-text">
+                Design, scripting, and testing — how one person put together a Fall Guys–style
+                obstacle course in Creative.
+              </p>
+              <div class="card-actions">
+                <a href="/devlog/hexagon/" class="btn-ghost card-link">Read more →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="tile bg-accent-2 text-ink">
+              <img src="./assets/mark.png" alt="" class="tile-icon" />
+            </div>
+            <div class="card-body">
+              <p class="card-meta">Jul 18, 2026</p>
+              <h3 class="heading-sm mt-2">The Winter Update, Breakdown</h3>
+              <p class="card-text">
+                New obstacles, new skybox, same chaos — what changed in Hexagon's seasonal
+                refresh.
+              </p>
+              <div class="card-actions">
+                <a href="/devlog/hexagon/" class="btn-ghost card-link">Read more →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="tile bg-ink text-paper">
+              <img src="./assets/mark.png" alt="" class="tile-icon" />
+            </div>
+            <div class="card-body">
+              <p class="card-meta">Jun 30, 2026</p>
+              <h3 class="heading-sm mt-2">Why I Still Make Maps</h3>
+              <p class="card-text">A few notes on doing this solo, just for the love of the game.</p>
+              <div class="card-actions">
+                <a href="/devlog/hexagon/" class="btn-ghost card-link">Read more →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="devlog-footer">
+          <a href="/devlog/" class="btn-secondary">View all posts →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Guide -->
+    <section id="brand" class="section">
+      <div class="container-x">
+        <div class="section-intro">
+          <p class="eyebrow">Brand Guide</p>
+          <h2 class="section-title">The building blocks of Indying</h2>
+          <p class="section-lede">
+            A small, consistent system: one mascot, one accent color, two typefaces — used
+            the same way everywhere.
+          </p>
+        </div>
+
+        <!-- Logo -->
+        <div class="brand-subsection">
+          <h3 class="heading-sm">Logo</h3>
+          <div class="logo-grid">
+            <div class="card logo-card">
+              <img src="./assets/mark.png" alt="Indying Games mark" class="h-24 w-24 rounded-2xl" />
+              <span class="logo-caption">Mark</span>
+            </div>
+            <div class="card logo-card">
+              <img src="./assets/lockup.png" alt="Indying Games full lockup" class="h-40 w-auto" />
+              <span class="logo-caption">Full lockup</span>
+            </div>
+            <div class="card logo-card logo-card--dark">
+              <img src="./assets/mark.png" alt="Indying Games mark on dark" class="h-24 w-24 rounded-2xl" />
+              <span class="logo-caption logo-caption--dark">On dark surfaces</span>
+            </div>
+          </div>
+          <p class="section-note">
+            Keep clear space equal to the mark's height on every side. The mark is self-contained
+            black + white artwork — never recolor the skull or the badge.
+          </p>
+        </div>
+
+        <!-- Colors -->
+        <div class="brand-subsection">
+          <h3 class="heading-sm">Color</h3>
+          <div class="color-grid">
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-paper"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Paper</p>
+                <p class="color-hex">#F5F1E5</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-paper-2"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Paper 2</p>
+                <p class="color-hex">#ECE5D2</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-ink"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Ink</p>
+                <p class="color-hex">#14110F</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-ink-soft"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Ink Soft</p>
+                <p class="color-hex">#58513F</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-accent"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Accent</p>
+                <p class="color-hex">#FF4433</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-accent-2"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Accent 2</p>
+                <p class="color-hex">#F5C542</p>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch-fill bg-line"></div>
+              <div class="color-swatch-label">
+                <p class="color-name">Line</p>
+                <p class="color-hex">#D8CFB3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="brand-subsection">
+          <h3 class="heading-sm">Typography</h3>
+          <div class="type-grid">
+            <div class="card type-card">
+              <p class="type-label">Display — Anton</p>
+              <p class="type-sample-display">Aa Bb Cc</p>
+              <p class="type-example-display">Ship it Friday</p>
+              <p class="type-note">Headlines, nav wordmark, section titles — always uppercase</p>
+            </div>
+            <div class="card type-card">
+              <p class="type-label">Hand — Permanent Marker</p>
+              <p class="type-sample-hand">Aa Bb Cc</p>
+              <p class="type-example-hand">yes, really.</p>
+              <p class="type-note">Stickers, pills, callouts — use sparingly</p>
+            </div>
+            <div class="card type-card">
+              <p class="type-label">Body — Inter</p>
+              <p class="type-sample-body">Aa Bb Cc</p>
+              <p class="type-example-body">
+                Interface copy stays calm and readable; the mascot and marker accents carry
+                the personality.
+              </p>
+              <p class="type-note">Weights: 400 / 500 / 600 / 700</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="brand-subsection">
+          <h3 class="heading-sm">Buttons</h3>
+          <div class="card button-showcase">
+            <a href="#" class="btn-primary">Primary action</a>
+            <a href="#" class="btn-secondary">Secondary</a>
+            <a href="#" class="btn-ghost">Ghost link</a>
+          </div>
+          <ul class="guideline-list">
+            <li>Every filled and outlined button carries a hard 4px ink shadow that presses flat on click — keep it,
+              don't blur it.</li>
+            <li>One primary (accent-filled) button per view; pair it with secondary or ghost, never two primaries side
+              by side.</li>
+            <li>Minimum 44px tap target on touch surfaces.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-x footer-inner">
+      <span>© 2026 Indying Games</span>
+      <div class="footer-links">
+        <a href="#" class="navlink">Twitter</a>
+        <a href="#" class="navlink">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

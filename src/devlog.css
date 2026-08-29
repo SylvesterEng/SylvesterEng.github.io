@@ -1,0 +1,347 @@
+/*
+  Blog archive + single-post styles.
+
+  Plain CSS on purpose: this file is loaded alongside style.css (which already
+  imports Tailwind and defines the color and font custom properties via
+  @theme). Re-importing Tailwind here would duplicate the preflight reset on
+  every page that loads both files, so this file just consumes the existing
+  custom properties instead.
+*/
+
+/* Archive page */
+.archive-header {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 1.5rem 3rem;
+  text-align: center;
+  background-image: radial-gradient(rgba(20, 17, 15, 0.08) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  background-color: var(--color-paper);
+}
+
+.archive-header > * {
+  position: relative;
+}
+
+.archive-title {
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 640px) {
+  .archive-title {
+    font-size: 3.5rem;
+  }
+}
+
+.archive-lede {
+  max-width: 34rem;
+  margin: 1rem auto 0;
+  color: var(--color-ink-soft);
+}
+
+.archive-list {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .archive-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .archive-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.archive-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--color-ink);
+  border-radius: 1rem;
+  background: var(--color-paper-2);
+  box-shadow: 4px 4px 0 0 var(--color-ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.archive-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+}
+
+.archive-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.archive-meta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-soft);
+}
+
+.archive-item-title {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.archive-excerpt {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--color-ink-soft);
+}
+
+.archive-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+/* Single post */
+.post-header {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 0;
+}
+
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+
+.post-back:hover {
+  color: var(--color-ink);
+}
+
+.post-title {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 640px) {
+  .post-title {
+    font-size: 3.25rem;
+  }
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+}
+
+.post-meta-dot {
+  opacity: 0.5;
+}
+
+.post-lead {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  color: var(--color-ink-soft);
+}
+
+.post-cover {
+  max-width: 48rem;
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.post-cover img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--color-ink);
+  border-radius: 1rem;
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+}
+
+.post-body {
+  max-width: 42rem;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem 6rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+
+.post-body>*+* {
+  margin-top: 1.25rem;
+}
+
+.post-body h2 {
+  margin-top: 2.5rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.post-body h3 {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.post-body p {
+  color: var(--color-ink);
+}
+
+.post-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.post-body a:hover {
+  color: var(--color-ink);
+}
+
+.post-body strong {
+  font-weight: 700;
+}
+
+.post-body em {
+  font-style: italic;
+}
+
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.375rem;
+}
+
+.post-body pre {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+  border: 2px solid var(--color-ink);
+  border-radius: 0.75rem;
+  background: var(--color-ink);
+  padding: 1.25rem;
+}
+
+.post-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-paper);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.post-body blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1.25rem;
+  font-family: var(--font-hand);
+  font-size: 1.375rem;
+  color: var(--color-ink);
+}
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5rem;
+}
+
+.post-body ul {
+  list-style: disc;
+}
+
+.post-body ol {
+  list-style: decimal;
+}
+
+.post-body li+li {
+  margin-top: 0.5rem;
+}
+
+.post-body hr {
+  border: none;
+  border-top: 2px dashed var(--color-line);
+  margin-top: 2.5rem;
+}
+
+.post-body figure {
+  margin-top: 1.75rem;
+}
+
+.post-body figure img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--color-ink);
+  border-radius: 0.75rem;
+}
+
+.post-body figcaption {
+  margin-top: 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.post-callout {
+  display: flex;
+  gap: 0.75rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 0.75rem;
+  background: var(--color-accent-2);
+  padding: 1.25rem;
+}
+
+.post-callout-icon {
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.post-callout p {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.post-footer {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-ink);
+}

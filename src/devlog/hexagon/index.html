@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Hexagon Fall Guys Solo — Indying Games</title>
+  <meta name="description" content="Design, scripting, and testing — how one person put together a Fall Guys–style obstacle course in Fortnite Creative." />
+  <link rel="icon" type="image/png" href="../../assets/mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../devlog.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="container-x navbar-inner">
+      <a href="/" class="navbar-brand">
+        <img src="../../assets/mark.png" alt="Indying Games skull mark" class="navbar-mark" />
+        <span class="navbar-wordmark">INDYING <span class="text-accent">GAMES</span></span>
+      </a>
+
+      <nav class="navbar-links">
+        <a href="/#games" class="navlink">Games</a>
+        <a href="/#community" class="navlink">About</a>
+        <a href="/devlog/" class="navlink">Devlog</a>
+        <a href="/#brand" class="navlink">Brand Guide</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="https://www.fortnite.com/@indying" target="_blank" rel="noopener" class="btn-primary">Follow</a>
+      </div>
+
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-open" class="menu-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" /></svg>
+        <svg id="icon-close" class="menu-icon hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden">
+      <div class="container-x mobile-menu-inner">
+        <a href="/#games" class="navlink-mobile">Games</a>
+        <a href="/#community" class="navlink-mobile">About</a>
+        <a href="/devlog/" class="navlink-mobile">Devlog</a>
+        <a href="/#brand" class="navlink-mobile">Brand Guide</a>
+        <div class="mobile-menu-actions">
+          <a href="https://www.fortnite.com/@indying" target="_blank" rel="noopener" class="btn-primary">Follow</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="post-header">
+      <a href="/devlog/" class="post-back">← All posts</a>
+      <h1 class="post-title">Building Hexagon Fall Guys Solo</h1>
+      <div class="post-meta">
+        <span>Aug 2, 2026</span>
+        <span class="post-meta-dot">·</span>
+        <span>6 min read</span>
+        <span class="post-meta-dot">·</span>
+        <span>Dev Log</span>
+      </div>
+      <p class="post-lead">
+        Design, scripting, and testing — how one person put together a Fall Guys–style obstacle
+        course in Fortnite Creative, and what broke along the way.
+      </p>
+    </div>
+
+    <div class="post-cover">
+      <img src="../../assets/game-hexagon.jpg" alt="Hexagon Fall Guys cover art" />
+    </div>
+
+    <article class="post-body">
+      <p>
+        Hexagon started as a two-week experiment: could a single obstacle course, built entirely
+        solo, hold a lobby's attention for more than one run? Almost a year later it's the most
+        played map in the catalog, and the Winter Update pushed its all-time peak past
+        <strong>10,000 concurrent players</strong>. None of that was the plan going in.
+      </p>
+
+      <h2>Starting with the fall, not the course</h2>
+      <p>
+        Most obstacle-course tutorials start with the first obstacle. I started with the
+        <em>fall</em> — the few seconds after elimination where a player free-falls back to the
+        spectator platform. If that moment doesn't feel good, nothing before it matters, because
+        it's the last thing a losing player experiences before deciding whether to queue again.
+      </p>
+      <p>
+        Everything else — checkpoints, hazards, the wedge sequence people screenshot the most —
+        got built backward from that five-second window.
+      </p>
+
+      <blockquote>
+        If the elimination doesn't feel fair, the obstacle doesn't matter.
+      </blockquote>
+
+      <h2>The checkpoint device loop</h2>
+      <p>
+        Creative's checkpoint devices handle the obvious case — respawn a player where they last
+        stood — but Hexagon needed per-player state for streaks and near-misses too. That meant
+        a small Verse module tracking three things per player: last checkpoint, consecutive
+        clears, and a rolling "close call" counter used to trigger the wedge-tilt VFX.
+      </p>
+
+      <pre><code>player_state := class:
+    last_checkpoint : int = 0
+    clear_streak : int = 0
+    close_calls : int = 0
+
+OnPlayerEliminated(Agent : agent) : void =
+    if (State := PlayerStates[Agent]):
+        State.clear_streak = 0
+        RespawnAt(Agent, State.last_checkpoint)</code></pre>
+
+      <p>
+        Nothing exotic — the trick was keeping the state small enough that it never desynced
+        under load, even with sixteen players hitting checkpoints within the same tick.
+      </p>
+
+      <h3>What actually broke</h3>
+      <ol>
+        <li>Checkpoint volumes overlapping at obstacle seams, double-firing the streak counter</li>
+        <li>The ice-block obstacle desyncing its rotation for late joiners mid-round</li>
+        <li>A memory leak from spawning VFX on every close call instead of pooling them</li>
+      </ol>
+      <p>
+        The VFX leak was the worst of the three — invisible in testing with two players, and a
+        hard crash by round three with a full lobby. Pooling fixed it in an afternoon; finding it
+        took most of a week.
+      </p>
+
+      <div class="post-callout">
+        <span class="post-callout-icon">✎</span>
+        <p>
+          Dev note: if a bug only shows up with a full lobby, test with a full lobby. Bots don't
+          reproduce timing bugs the way real, laggy, impatient players do.
+        </p>
+      </div>
+
+      <h2>What shipped in the Winter Update</h2>
+      <p>Three changes made it into the seasonal refresh:</p>
+      <ul>
+        <li>A new skybox and lighting pass, mostly for screenshots</li>
+        <li>Two reworked obstacles that were getting skipped via a wallrun exploit</li>
+        <li>A visible streak counter, so the near-miss VFX finally has something to point at</li>
+      </ul>
+
+      <figure>
+        <img src="../../assets/game-hexagon.jpg" alt="Hexagon Fall Guys winter update thumbnail" />
+        <figcaption>The winter pass swapped the horizon and reworked the mid-course ice block.</figcaption>
+      </figure>
+
+      <hr />
+
+      <h2>Would I do it solo again?</h2>
+      <p>
+        Yes, mostly because there was no one else to blame for the desync bug, which meant I
+        actually had to understand it instead of filing a ticket. That's the trade-off of doing
+        this alone — slower to ship, but nothing goes out that I can't explain line by line.
+      </p>
+    </article>
+
+    <div class="post-footer">
+      <div class="post-tags">
+        <span class="tag">Fortnite Creative</span>
+        <span class="tag">Devlog</span>
+        <span class="tag">Verse</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-x footer-inner">
+      <span>© 2026 Indying Games</span>
+      <div class="footer-links">
+        <a href="#" class="navlink">Twitter</a>
+        <a href="#" class="navlink">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../../index.js"></script>
+</body>
+</html>

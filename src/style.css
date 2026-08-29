@@ -1,0 +1,437 @@
+@import "tailwindcss";
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* anton-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/anton-v27-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* permanent-marker-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Permanent Marker';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/permanent-marker-v16-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@theme {
+  --color-paper: #f5f1e5;
+  --color-paper-2: #ece5d2;
+  --color-ink: #14110f;
+  --color-ink-soft: #58513f;
+  --color-accent: #ff4433;
+  --color-accent-2: #f5c542;
+  --color-line: #d8cfb3;
+  --font-display: "Anton", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Permanent Marker", cursive;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+  }
+}
+
+@layer components {
+
+  /* Layout */
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+
+  .section {
+    @apply border-t-2 border-ink py-24;
+  }
+
+  .section-intro {
+    @apply max-w-2xl;
+  }
+
+  .section-title {
+    @apply mt-3 font-display text-3xl uppercase tracking-wide sm:text-4xl;
+  }
+
+  .section-lede {
+    @apply mt-4 text-ink-soft;
+  }
+
+  .section-note {
+    @apply mt-4 text-sm text-ink-soft;
+  }
+
+  .section-stats {
+    @apply mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm text-ink-soft;
+  }
+
+  .stat-value {
+    @apply text-ink;
+  }
+
+  .heading-sm {
+    @apply font-display text-xl uppercase tracking-wide;
+  }
+
+  .halftone {
+    @apply pointer-events-none absolute inset-0 opacity-[0.07];
+    background-image: radial-gradient(#14110f 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+
+  /* Navbar */
+  #navbar {
+    @apply fixed inset-x-0 top-0 z-50 border-b-2 border-ink bg-paper/90 backdrop-blur-md transition-shadow;
+  }
+
+  .navbar-inner {
+    @apply flex h-16 items-center justify-between;
+  }
+
+  .navbar-brand {
+    @apply flex items-center gap-3;
+  }
+
+  .navbar-mark {
+    @apply h-10 w-10 rounded-lg;
+  }
+
+  .navbar-wordmark {
+    @apply font-display text-xl tracking-wide;
+  }
+
+  .navbar-links {
+    @apply hidden items-center gap-8 md:flex;
+  }
+
+  .navbar-actions {
+    @apply hidden items-center gap-3 md:flex;
+  }
+
+  #menu-toggle {
+    @apply flex h-9 w-9 items-center justify-center rounded-lg text-ink md:hidden;
+  }
+
+  .menu-icon {
+    @apply h-5 w-5;
+  }
+
+  #mobile-menu {
+    @apply border-t-2 border-ink bg-paper/95 backdrop-blur-md md:hidden;
+  }
+
+  .mobile-menu-inner {
+    @apply flex flex-col gap-1 py-4;
+  }
+
+  .mobile-menu-actions {
+    @apply mt-2 flex flex-col gap-2 border-t border-line pt-4;
+  }
+
+  .navlink {
+    @apply text-sm font-medium text-ink-soft transition-colors hover:text-ink;
+  }
+
+  .navlink-mobile {
+    @apply rounded-lg px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-2 hover:text-ink;
+  }
+
+  /* Hero */
+  .hero {
+    @apply relative flex min-h-screen flex-col items-center justify-center overflow-hidden pb-16 pt-24;
+  }
+
+  .hero-inner {
+    @apply relative text-center;
+  }
+
+  .hero-mark {
+    @apply mx-auto h-24 w-24 rotate-3 rounded-2xl border-2 border-ink shadow-[6px_6px_0_0_#14110f];
+  }
+
+  .hero-title {
+    @apply mx-auto mt-6 max-w-3xl font-display text-5xl uppercase leading-none tracking-wide sm:text-6xl;
+  }
+
+  .hero-subtitle {
+    @apply mx-auto mt-6 max-w-2xl text-lg text-ink-soft;
+  }
+
+  .hero-actions {
+    @apply mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row;
+  }
+
+  /* About */
+  .about-card {
+    @apply mt-10 max-w-3xl rounded-2xl border-2 border-ink bg-paper-2 p-8;
+  }
+
+  .about-profile {
+    @apply flex items-center gap-4;
+  }
+
+  .about-avatar {
+    @apply h-16 w-16 rounded-2xl border-2 border-ink;
+  }
+
+  .about-name {
+    @apply font-display text-xl uppercase tracking-wide;
+  }
+
+  .about-role {
+    @apply text-sm text-ink-soft;
+  }
+
+  .about-bio {
+    @apply mt-5 text-ink-soft;
+  }
+
+  .about-facts {
+    @apply mt-6 grid grid-cols-2 gap-4 border-t border-line pt-6 sm:grid-cols-4;
+  }
+
+  .about-facts li {
+    @apply flex flex-col gap-1;
+  }
+
+  .about-facts span {
+    @apply text-xs font-medium uppercase tracking-wide text-ink-soft;
+  }
+
+  .about-facts strong {
+    @apply text-sm font-semibold text-ink;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-ink bg-accent px-5 py-2.5 text-sm font-semibold text-paper shadow-[4px_4px_0_0_#14110f] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#14110f] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-ink bg-paper px-5 py-2.5 text-sm font-semibold text-ink shadow-[4px_4px_0_0_#14110f] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#14110f] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-3 py-2 text-sm font-semibold text-ink-soft underline decoration-2 underline-offset-4 transition-colors hover:text-ink;
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  .card-link {
+    @apply inline-block px-0;
+  }
+
+  /* Shared bits */
+  .badge-pill {
+    @apply inline-flex -rotate-2 items-center gap-2 rounded-full border-2 border-ink bg-accent-2 px-4 py-1.5 font-hand text-sm text-ink;
+  }
+
+  .highlight {
+    @apply inline-block -rotate-1 bg-accent-2 px-2 text-ink;
+  }
+
+  .card {
+    @apply rounded-2xl border-2 border-ink bg-paper-2 p-6;
+  }
+
+  .eyebrow {
+    @apply font-hand text-lg text-accent;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full border-2 border-ink bg-paper px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+  }
+
+  /* Media cards (games + dev log) */
+  .media-grid {
+    @apply mt-12 grid max-w-2xl gap-8 sm:grid-cols-2;
+  }
+
+  .media-card {
+    @apply flex flex-col overflow-hidden rounded-2xl border-2 border-ink bg-paper-2;
+  }
+
+  .media-thumb {
+    @apply h-44 w-full border-b-2 border-ink object-cover;
+  }
+
+  .card-body {
+    @apply flex flex-1 flex-col p-6;
+  }
+
+  .card-meta {
+    @apply text-xs font-medium uppercase tracking-wide text-ink-soft;
+  }
+
+  .card-text {
+    @apply mt-2 text-sm text-ink-soft;
+  }
+
+  .card-actions {
+    @apply mt-auto flex flex-wrap items-center gap-3 pt-3;
+  }
+
+  .tile {
+    @apply relative flex h-44 items-center justify-center overflow-hidden border-b-2 border-ink;
+  }
+
+  .tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    background-image: radial-gradient(currentcolor 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+
+  .tile-icon {
+    @apply relative h-14 w-14 opacity-90;
+  }
+
+  /* Dev log */
+  .devlog-header {
+    @apply mt-12 max-w-2xl;
+  }
+
+  .devlog-grid {
+    @apply mt-6 grid gap-8 md:grid-cols-3;
+  }
+
+  .devlog-footer {
+    @apply mt-12 text-center;
+  }
+
+  /* Brand guide */
+  .brand-subsection {
+    @apply mt-16;
+  }
+
+  .logo-grid {
+    @apply mt-6 grid gap-6 md:grid-cols-3;
+  }
+
+  .logo-card {
+    @apply flex flex-col items-center justify-center gap-4 py-12;
+  }
+
+  .logo-card--dark {
+    @apply border-ink bg-ink;
+  }
+
+  .logo-caption {
+    @apply text-xs text-ink-soft;
+  }
+
+  .logo-caption--dark {
+    @apply text-paper/70;
+  }
+
+  .color-grid {
+    @apply mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4;
+  }
+
+  .color-swatch {
+    @apply overflow-hidden rounded-2xl border-2 border-ink;
+  }
+
+  .color-swatch-fill {
+    @apply h-20;
+  }
+
+  .color-swatch-label {
+    @apply bg-paper-2 p-3;
+  }
+
+  .color-name {
+    @apply text-sm font-semibold;
+  }
+
+  .color-hex {
+    @apply text-xs text-ink-soft;
+  }
+
+  .type-grid {
+    @apply mt-6 grid gap-6 lg:grid-cols-3;
+  }
+
+  .type-card {
+    @apply flex flex-col;
+  }
+
+  .type-label {
+    @apply text-xs font-medium text-ink-soft;
+  }
+
+  .type-note {
+    @apply mt-auto pt-4 text-xs text-ink-soft;
+  }
+
+  .type-sample-display {
+    @apply mt-4 font-display text-4xl uppercase;
+  }
+
+  .type-sample-hand {
+    @apply mt-4 font-hand text-3xl text-accent;
+  }
+
+  .type-sample-body {
+    @apply mt-4 text-2xl;
+  }
+
+  .type-example-display {
+    @apply mt-2 font-display text-lg uppercase tracking-wide;
+  }
+
+  .type-example-hand {
+    @apply mt-2 font-hand text-lg;
+  }
+
+  .type-example-body {
+    @apply mt-2 text-base text-ink-soft;
+  }
+
+  .button-showcase {
+    @apply mt-6 flex flex-wrap items-center gap-6;
+  }
+
+  .guideline-list {
+    @apply mt-4 list-disc space-y-1 pl-5 text-sm text-ink-soft;
+  }
+
+  /* Footer */
+  .site-footer {
+    @apply border-t-2 border-ink py-10;
+  }
+
+  .footer-inner {
+    @apply flex flex-col items-center justify-between gap-4 text-sm text-ink-soft sm:flex-row;
+  }
+
+  .footer-links {
+    @apply flex gap-6;
+  }
+}
